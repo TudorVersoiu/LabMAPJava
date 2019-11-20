@@ -10,8 +10,8 @@ import java.time.temporal.ChronoUnit;
 
 public class Assignment<ID> extends Entity<ID> {
     private String description;
-    private Integer start_week;
-    private Integer end_week;
+    private Integer startWeek;
+    private Integer endWeek;
 
     public Assignment(String description, Integer deadline) {
         LocalDate dateBefore = LocalDate.of(2019, Month.OCTOBER, 1);
@@ -21,32 +21,37 @@ public class Assignment<ID> extends Entity<ID> {
         int week = (int) (noOfDaysBetween/7 + 1);
 
         this.description = description;
-        this.start_week = week;
-        this.end_week = deadline;
+        this.startWeek = week;
+        this.endWeek = deadline;
     }
 
     public Integer getEndWeek() {
-        return end_week;
+        return endWeek;
     }
 
-    public void setEnd_week(Integer end_week) throws ValidationException {
-        if ( end_week < this.start_week ) throw new ValidationException();
-        this.end_week = end_week;
+    public Assignment setEndWeek(Integer end_week) throws ValidationException {
+        if ( end_week < this.startWeek ) {
+            throw new ValidationException();
+        }
+        this.endWeek = end_week;
+        return this;
     }
 
     public Integer getStartWeek() {
-        return start_week;
+        return startWeek;
     }
 
-    public void setStart_week(Integer start_week) {
-        this.start_week = start_week;
+    public Assignment setStartWeek(Integer start_week) {
+        this.startWeek = start_week;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Assignment setDescription(String description) {
         this.description = description;
+        return this;
     }
 }
