@@ -15,7 +15,7 @@ public class StudentController {
         this.studentRepository = studentRepository;
     }
 
-    void add(StudentInput student) throws AlreadyExistsError, ValidationException {
+    public void add(StudentInput student) throws AlreadyExistsError, ValidationException {
         studentRepository.save(
                 new Student(
                         Integer.parseInt(student.ID),
@@ -37,7 +37,7 @@ public class StudentController {
         );
     }
 
-    void remove(String id){
+    public void delete(String id){
         studentRepository.delete(Integer.parseInt(id));
     }
 }

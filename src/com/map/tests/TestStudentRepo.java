@@ -31,7 +31,7 @@ public class TestStudentRepo {
         }
 
         // Validation test for Assignments
-        Repository<Integer, Assignment> ass_repo = new Repository<>(new AssignmentValidator<Integer>());
+        Repository<Integer, Assignment> ass_repo = new Repository<>(new AssignmentValidator());
 
         try {
             ass_repo.save(

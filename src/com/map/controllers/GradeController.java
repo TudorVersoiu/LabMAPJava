@@ -2,7 +2,6 @@ package com.map.controllers;
 
 import com.map.domain.Assignment;
 import com.map.domain.Grade;
-import com.map.domain.Professor;
 import com.map.domain.Student;
 import com.map.exceptions.AlreadyExistsError;
 import com.map.exceptions.ValidationException;
@@ -34,7 +33,7 @@ public class GradeController {
                        Integer.parseInt(grade.gradeValue))
         );
     }
-    public void remove(String ID) {
+    public void delete(String ID) {
         gradeRepository.delete(Integer.parseInt(ID));
     }
     public void update(GradeInput grade) throws ValidationException {

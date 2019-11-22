@@ -7,20 +7,24 @@ import com.map.repository.Repository;
 import com.map.util.AssignmentInput;
 
 public class AssignmentController {
-    private Repository<Integer, Assignment> assigmentRepository;
+    private Repository<Integer, Assignment> assignmentRepository;
+
+    public AssignmentController(Repository<Integer, Assignment> assignmentRepository) {
+        this.assignmentRepository = assignmentRepository;
+    }
 
 
     public void add(AssignmentInput assignment) throws ValidationException, AlreadyExistsError {
-        assigmentRepository.save(
-                new Assignment(assignment.description, Integer.parseInt(assignment.end_week))
+        assignmentRepository.save(
+                new Assignment(assignment.description, Integer.parseInt(assignment.endWeek))
         );
     }
     public void delete(String id) {
-        assigmentRepository.delete(Integer.parseInt(id));
+        assignmentRepository.delete(Integer.parseInt(id));
     }
     public void update(AssignmentInput assignment) throws ValidationException {
-        assigmentRepository.update(
-                new Assignment(assignment.description, Integer.parseInt(assignment.end_week))
+        assignmentRepository.update(
+                new Assignment(assignment.description, Integer.parseInt(assignment.endWeek))
         );
     }
 }
