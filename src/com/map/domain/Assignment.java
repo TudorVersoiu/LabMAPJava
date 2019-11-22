@@ -2,16 +2,15 @@ package com.map.domain;
 
 import com.map.exceptions.ValidationException;
 import com.map.util.Entity;
-import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
 
-public class Assignment<ID> extends Entity<ID> {
+public class Assignment extends Entity<Integer> {
     private String description;
-    private Integer startWeek;
-    private Integer endWeek;
+    private java.lang.Integer startWeek;
+    private java.lang.Integer endWeek;
 
     public Assignment(String description, Integer deadline) {
         LocalDate dateBefore = LocalDate.of(2019, Month.OCTOBER, 1);
@@ -25,7 +24,7 @@ public class Assignment<ID> extends Entity<ID> {
         this.endWeek = deadline;
     }
 
-    public Integer getEndWeek() {
+    public java.lang.Integer getEndWeek() {
         return endWeek;
     }
 

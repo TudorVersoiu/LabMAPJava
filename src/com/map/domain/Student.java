@@ -3,13 +3,12 @@ package com.map.domain;
 import com.map.util.ContactInfo;
 import com.map.util.Entity;
 
-public class Student<ID> extends Entity<ID> {
+public class Student extends Entity<Integer> {
     private Integer group;
     private String supervisor_name;
-
     private ContactInfo contact_info;
 
-    public Student(ID id, Integer group, String supervisor_name, ContactInfo contact_info) {
+    public Student(Integer id, java.lang.Integer group, String supervisor_name, ContactInfo contact_info) {
         this.group = group;
         this.supervisor_name = supervisor_name;
         this.setContact_info(contact_info);
@@ -19,13 +18,14 @@ public class Student<ID> extends Entity<ID> {
     public Integer getGroup() {
         return this.group;
     }
+
     public String getSupervisorName() {
         return this.supervisor_name;
     }
 
     @Override
     public String toString() {
-        return "STUDENT, ID: " + Integer.toString(group) +
+        return "STUDENT, ID: " + group +
                 "Supervisor" + supervisor_name +
                 "Contact: " + getContact_info();
     }

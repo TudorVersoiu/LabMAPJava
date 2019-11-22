@@ -10,7 +10,7 @@ import java.util.Map;
 
 
 public class Repository<ID, E extends Entity<ID>> implements CrudRepository<ID, E> {
-    private Map<ID, E> entries = new HashMap<ID, E>();
+    private Map<ID, E> entries = new HashMap<>();
     private Validator<E> validator;
 
     public Repository(Validator<E> validator) {
@@ -28,11 +28,12 @@ public class Repository<ID, E extends Entity<ID>> implements CrudRepository<ID, 
     }
 
     @Override
-    public E save(E entity) throws ValidationException, AlreadyExistsError {
-        if (this.entries.get(entity.getId()) != null)
+    public E save(E newEntry) throws ValidationException, AlreadyExistsError {
+        if (this.entries.get(newEntry.getId()) != null) {
             throw new AlreadyExistsError();
-        this.validator.validate(entity);
-        return this.entries.put(entity.getId(), entity);
+        }
+        this.validator.validate(newEntry);
+        return this.entries.put(newEntry.getId(), newEntry);
     }
 
     @Override
