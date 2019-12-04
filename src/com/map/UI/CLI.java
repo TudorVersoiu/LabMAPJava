@@ -3,9 +3,11 @@ package com.map.UI;
 import com.map.controllers.AssignmentController;
 import com.map.controllers.GradeController;
 import com.map.controllers.StudentController;
+import com.map.domain.Grade;
 import com.map.exceptions.AlreadyExistsError;
 import com.map.exceptions.ValidationException;
 import com.map.util.AssignmentInput;
+import com.map.util.GradeInput;
 import com.map.util.StudentInput;
 
 import java.util.Scanner;
@@ -110,6 +112,10 @@ public class CLI {
         System.out.println("End week: ");
         input.endWeek = in.nextLine();
 
+        return input;
+    }
+    private GradeInput readGrade() {
+        GradeInput input = new GradeInput();
         return input;
     }
 }

@@ -13,10 +13,13 @@ public class AssignmentController {
         this.assignmentRepository = assignmentRepository;
     }
 
-
     public void add(AssignmentInput assignment) throws ValidationException, AlreadyExistsError {
         assignmentRepository.save(
-                new Assignment(assignment.description, Integer.parseInt(assignment.endWeek))
+                new Assignment(
+                        Integer.parseInt(assignment.assignmentID),
+                        assignment.description,
+                        Integer.parseInt(assignment.endWeek)
+                )
         );
     }
     public void delete(String id) {
@@ -24,7 +27,11 @@ public class AssignmentController {
     }
     public void update(AssignmentInput assignment) throws ValidationException {
         assignmentRepository.update(
-                new Assignment(assignment.description, Integer.parseInt(assignment.endWeek))
+                new Assignment(
+                    Integer.parseInt(assignment.assignmentID),
+                    assignment.description,
+                    Integer.parseInt(assignment.endWeek)
+                )
         );
     }
 }

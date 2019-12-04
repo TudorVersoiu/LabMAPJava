@@ -29,7 +29,7 @@ public class Repository<ID, E extends Entity<ID>> implements CrudRepository<ID, 
 
     @Override
     public E save(E newEntry) throws ValidationException, AlreadyExistsError {
-        if (this.entries.get(newEntry.getId()) != null) {
+        if ( findOne(newEntry.getId()) != null) {
             throw new AlreadyExistsError();
         }
         this.validator.validate(newEntry);

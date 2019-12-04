@@ -9,10 +9,10 @@ import java.time.temporal.ChronoUnit;
 
 public class Assignment extends Entity<Integer> {
     private String description;
-    private java.lang.Integer startWeek;
-    private java.lang.Integer endWeek;
+    private Integer startWeek;
+    private Integer endWeek;
 
-    public Assignment(String description, Integer deadline) {
+    public Assignment(Integer ID, String description, Integer deadline) {
         LocalDate dateBefore = LocalDate.of(2019, Month.OCTOBER, 1);
         LocalDate dateAfter = LocalDate.now();
         long noOfDaysBetween = ChronoUnit.DAYS.between(dateBefore, dateAfter);
@@ -22,9 +22,14 @@ public class Assignment extends Entity<Integer> {
         this.description = description;
         this.startWeek = week;
         this.endWeek = deadline;
+
+        setId(ID);
+    }
+    public Assignment(String ID, String description, String deadline) {
+        this(Integer.parseInt(ID), description, Integer.parseInt(deadline));
     }
 
-    public java.lang.Integer getEndWeek() {
+    public Integer getEndWeek() {
         return endWeek;
     }
 

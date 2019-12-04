@@ -25,24 +25,36 @@ public class GradeController {
     }
 
     public void add(GradeInput grade) throws ValidationException, AlreadyExistsError {
+        if ( studentRepository.findOne(Integer.parseInt(grade.studentID)) == null ) {
+            throw new Error();
+        }
+        if ( assignmentRepository.findOne(Integer.parseInt(grade.assignmentID)) == null ) {
+            throw new Error();
+        }
+
         gradeRepository.save(
-               new Grade(
-                       new Date(),
-                       studentRepository.findOne(Integer.parseInt(grade.professorID)),
-                       assignmentRepository.findOne(Integer.parseInt(grade.studentID)),
-                       Integer.parseInt(grade.gradeValue))
+                new Grade(
+                        new Date(),
+                        Integer.parseInt(grade.assignmentID),
+                        Integer.parseInt(grade.studentID),
+                        Integer.parseInt(grade.professorID),
+                        Integer.parseInt(grade.gradeValue))
         );
     }
+
     public void delete(String ID) {
         gradeRepository.delete(Integer.parseInt(ID));
     }
+
     public void update(GradeInput grade) throws ValidationException {
         gradeRepository.update(
                 new Grade(
                         new Date(),
-                        studentRepository.findOne(Integer.parseInt(grade.professorID)),
-                        assignmentRepository.findOne(Integer.parseInt(grade.studentID)),
-                        Integer.parseInt(grade.gradeValue))
+                        Integer.parseInt(grade.assignmentID),
+                        Integer.parseInt(grade.studentID),
+                        Integer.parseInt(grade.professorID),
+                        Integer.parseInt(grade.gradeValue)
+                )
         );
     }
 }

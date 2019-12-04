@@ -6,14 +6,16 @@ import java.util.Date;
 
 public class Grade extends Entity<Integer> {
     private Date date;
-    private Student student;
-    private Assignment assignment;
+    private Integer studentID;
+    private Integer assignmentID;
+    private Integer professorID;
     private Integer value;
 
-    public Grade(Date date, Student student, Assignment assignment, Integer value) {
+    public Grade(Date date, Integer studentID, Integer assignmentID, Integer professorID, Integer value) {
         this.date = date;
-        this.student = student;
-        this.assignment = assignment;
+        this.studentID = studentID;
+        this.assignmentID = assignmentID;
+        this.professorID = professorID;
         this.value = value;
     }
     public Date getDate() {
@@ -24,20 +26,28 @@ public class Grade extends Entity<Integer> {
         this.date = date;
     }
 
-    public Student getStudent() {
-        return student;
+    public Integer getStudentID() {
+        return studentID;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudentID(Integer studentID) {
+        this.studentID = studentID;
     }
 
-    public Assignment getAssignment() {
-        return assignment;
+    public Integer getAssignmentID() {
+        return assignmentID;
     }
 
-    public void setAssignment(Assignment assignment) {
-        this.assignment = assignment;
+    public void setAssignmentID(Integer assignmentID) {
+        this.assignmentID = assignmentID;
+    }
+
+    public Integer getProfessorID() {
+        return professorID;
+    }
+
+    public void setProfessorID(Integer professorID) {
+        this.professorID = professorID;
     }
 
     public Integer getValue() {

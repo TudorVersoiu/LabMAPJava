@@ -6,7 +6,6 @@ import com.map.exceptions.ValidationException;
 import com.map.repository.Repository;
 import com.map.util.ContactInfo;
 import com.map.util.StudentInput;
-import com.map.validation.DummyValidator;
 
 public class StudentController {
     private Repository<Integer, Student> studentRepository;
@@ -28,7 +27,7 @@ public class StudentController {
 
     void update(StudentInput student) throws ValidationException {
         studentRepository.update(
-                new Student(
+                new Student (
                         Integer.parseInt(student.ID),
                         Integer.parseInt(student.group),
                         student.supervisorName,
